@@ -20,15 +20,14 @@ jobs:
       - name: Install dependencies
         run: |
           npm i prettier
-          npm i -g lintspaces-cli
+          sudo npm i -g lintspaces-cli
 
       - name: Prettier
         run: ./node_modules/prettier/bin-prettier.js --check ./src/* ./src/**/* ./src/**/**/* ./sass/*.scss
 
       - name: lintspaces
         run: |
-          npm i -g lintspaces-cli
-          intspaces -nt -d 'spaces' -i 'js-comments' src/*/* src/*.ts view/* manifest-*.json css/popup.css css/import.css
+          lintspaces -nt -d 'spaces' -i 'js-comments' src/*/* src/*.ts view/* manifest-*.json css/popup.css css/import.css
   build-ffx:
     runs-on: ubuntu-latest
     name: Build Firefox & run addons-linter
@@ -42,7 +41,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm i
-          npm install --only=production -g addons-linter
+          sudo npm install --only=production -g addons-linter
           
       - name: Build
         run: npm run firefox
