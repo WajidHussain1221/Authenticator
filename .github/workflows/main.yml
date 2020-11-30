@@ -46,7 +46,7 @@ jobs:
       - name: Build
         run: npm run firefox
         
-      - name: Runn addons-linter
+      - name: Run addons-linter
         run: addons-linter firefox
   build-chrome:
     runs-on: ubuntu-latest
